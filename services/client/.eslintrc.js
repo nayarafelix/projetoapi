@@ -18,6 +18,9 @@ module.exports = {
     'import/extensions': ['error', 'never'],
     'no-use-before-define': ['error'],
     'linebreak-style': ['error', 'unix'],
+    'consistent-return': 'off',
+    'default-case': 'off',
+    'no-unreachable': 'off',
     quotes: ['error', 'single'],
   },
 }

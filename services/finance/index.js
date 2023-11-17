@@ -16,11 +16,11 @@ app.get('/', (req, res) => {
 })
 
 // Definir as rotas
-const userRoutes = require('./routes/userRoutes')
+const financeRoutes = require('./routes/financeRoutes')
 
-app.use('/usuario', userRoutes)
+app.use('/financeiro', financeRoutes)
 
 // Iniciar o servidor
-app.listen(process.env.USER_API_PORT, () => {
-  console.log(`Serviço de usuário rodando em ${process.env.HOST_NAME}:${process.env.USER_API_PORT}`)
+app.listen(process.env.FINANCE_API_PORT, () => {
+  console.log(`Serviço de financeiro rodando em ${process.env.HOST_NAME}:${process.env.FINANCE_API_PORT}`)
 })

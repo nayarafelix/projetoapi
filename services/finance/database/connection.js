@@ -5,13 +5,13 @@ const urldb = settings.dbpath
 
 // Conectar ao MongoDB
 mongoose.connect(urldb, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-    .then((rs) => {
-        console.log(rs)
-    }).catch((error) => {
+  .then((rs) => {
+    console.log(rs)
+  }).catch((error) => {
     console.error(`Erro de conexao ->${error}`)
-})
+  })
 
 module.exports = mongoose

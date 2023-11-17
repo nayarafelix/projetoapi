@@ -14,12 +14,12 @@ app.use(morgan('combined'))
 
 // Rota inicial
 app.get('/', (req, res) => {
-    res.send({ output: req.headers })
+  res.send({ output: req.headers })
 })
 
 // Rotas
 app.use('/cliente', clientRoutes)
 
 app.listen(process.env.CLIENT_API_PORT, () => {
-    console.log(`Serviço de cliente rodando em ${process.env.HOST_NAME}:${process.env.CLIENT_API_PORT}`);
+  console.log(`Serviço de cliente rodando em ${process.env.HOST_NAME}:${process.env.CLIENT_API_PORT}`)
 })

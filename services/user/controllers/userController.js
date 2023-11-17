@@ -60,10 +60,10 @@ exports.loginUser = async (req, res) => {
       return res.status(401).json({ output: 'Senha incorreta!' })
     }
 
-    const token = generateToken(user._id, user.username, user.email)
+    const token = generateToken(user.id, user.username, user.email)
 
     const info = new ManagerUser({
-      userid: user._id,
+      userid: user.id,
       username: user.username,
       information: req.headers,
       logindate: new Date(),
