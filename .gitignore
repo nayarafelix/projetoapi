@@ -2,3 +2,7 @@
 .idea
 .env
 data
+
+services/client/node_modules
+services/finance/node_modules
+services/user/node_modules
