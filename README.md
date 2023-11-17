@@ -11,6 +11,9 @@ Para executar o projeto em seu ambiente local, você deve atender aos seguintes 
 - Docker
 - Git
 - Postman (ou outra ferramenta de teste de API)
+  
+## Configuração
+Certifique-se de ter um arquivo .env na raiz do projeto para armazenar as variáveis de ambiente.
 
 ## Instalação
 Siga estas etapas para instalar e configurar o projeto em seu ambiente local:
@@ -21,61 +24,137 @@ git clone https://github.com/nandabalassoni/projetoMBABackEnd.git
 cd projetoapi
 ```
 
+2. Certifique-se de ter o Docker instalado e execute:
+   ``` docker-compose up ```
+
+3. Navegue até o diretório do serviço desejado em `services`. Por exemplo:
+   ```cd services/user/```
+
 2. Instale as dependências:
    ```npm install```
 
-3. Inicie o servidor:
+3. Inicie o serviço:
 
-```node server.js```
+```npm start```
 
 ## Uso
 
-### Acesso à API
-A API pode ser acessada em http://localhost:3000
-
 ### Autenticação
-Para acessar as rotas protegidas, você deve incluir um token JWT válido no cabeçalho da solicitação.
+A autenticação no sistema é realizada utilizando tokens JWT.
+Para obter um token, é necessário realizar o processo de login, que retorna o token como parte da resposta.
 
 Para obter um token JWT, utilize a rota de autenticação.
 
+Utilização do Token:
+Inclua o token JWT nas solicitações às rotas que requerem autenticação no cabeçalho da seguinte maneira:
+```
+Authorization: Bearer seu_token_jwt
+```
+
 ### Rotas
 
-Usuários
+### Usuários
 Cadastrar um novo usuário:
-```POST /api/usuarios/cadastro```
+```POST /usuario/cadastrar```
+```
+{
+  "name": "Nome do Usuário",
+  "email": "usuario@dominio.com",
+  "cpf": "123.456.789-01",
+  "telephone": "987654321",
+  "age": 30,
+  "username": "novousuario",
+  "password": "novasenha"
+}
+```
 
-Autenticar usuário e obter token JWT:
-```POST /api/usuarios/autenticacao```
+Logar em usuário e obter token JWT:
+```POST /usuario/login```
+Corpo da solicitação:
+```
+{
+  "email": "usuario@dominio.com",
+  "username": "novousuario",
+  "password": "novasenha"
+}
+```
 
 Alterar senha do usuário:
-```PUT /api/usuarios/alterarsenha```
+```PUT /usuario/alterarsenha```
+Corpo da solicitação:
+```
+{
+  "currentPassword": "senhaatual",
+  "newPassword": "novasenha"
+}
+```
+Autenticação Necessária
 
-Clientes
+### Clientes
 Cadastrar um novo cliente:
-```POST /api/clientes/cadastrarcliente```
+```POST /cliente/cadastrar```
+Corpo da solicitação:
+```
+{
+  "name": "Nome do Cliente",
+  "email": "cliente@dominio.com",
+  "cpf": "123.456.789-01",
+  "telephone": "987654321",
+  "address": "Rua ABC, 123",
+  "age": 30
+}
+```
+Autenticação Necessária
 
 Atualizar informações do cliente:
-```PUT /api/clientes/atualizarcliente/:clienteId```
+```PUT /cliente/atualizar/:id```
+Corpo da solicitação:
+```
+{
+  "name": "Novo Nome do Cliente",
+  "email": "novocliente@dominio.com",
+  "telephone": "123456789",
+  "address": "Nova Rua XYZ, 456"
+}
+```
+Autenticação Necessária
 
-Informações Financeiras
+### Informações Financeiras
 Cadastrar informações financeiras:
-```POST /api/financeiro/cadastrarfinanceiro```
+```POST /financeiro/cadastrar```
+Corpo da solicitação:
+```
+{
+  "clientId": "id_do_cliente",
+  "bank_name": "Nome do Banco",
+  "account_type": "Tipo de Conta",
+  "cardholder_name": "Nome do Titular do Cartão",
+  "card_limit": 5000
+}
+```
+Autenticação Necessária
 
 Atualizar informações financeiras:
-```PUT /api/financeiro/atualizarfinanceiro/:financeiroId```
+```PUT /financeiro/atualizar/:id```
+Corpo da solicitação:
+```
+{
+  "clientId": "id_do_cliente",
+  "bank_name": "Novo Nome do Banco",
+  "account_type": "Novo Tipo de Conta",
+  "cardholder_name": "Novo Titular do Cartão",
+  "card_limit": 7000
+}
+```
+Autenticação Necessária
 
 ## Banco de Dados
 O projeto utiliza o MongoDB como banco de dados.
 A estrutura do banco de dados está definida nos modelos de dados.
-Certifique-se de que o MongoDB esteja instalado e em execução.
 
 ## Segurança
 As senhas dos usuários são criptografadas antes de serem armazenadas no banco de dados.
-A autenticação é realizada por meio de tokens JWT.
-
-## Erros e Exceções
-O projeto utiliza códigos de erro HTTP padrão, como 400 para solicitações inválidas e 401 para acesso não autorizado.
 
 ## Autores
-- Maria Fernanda
-- Nayara Felix
+- Maria Fernanda Balassoni RM348434
+- Nayara Pereira Felix RM348253
