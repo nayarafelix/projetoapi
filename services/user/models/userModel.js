@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   createddate: { type: Date, default: Date.now },
 })
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function (next) {
   const user = this
   if (!user.isModified('password')) return next()
   bcrypt.hash(user.password, 10, (error, hashpass) => {
@@ -20,6 +20,10 @@ userSchema.pre('save', (next) => {
     return next()
   })
 })
+
+userSchema.methods.checkPassword = async function (password) {
+  return bcrypt.compare(password, this.password)
+}
 
 const UserModel = mongoose.model('User', userSchema)
 

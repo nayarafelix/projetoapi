@@ -1,5 +1,5 @@
 const express = require('express')
-const authentication = require('../../auth/auth')
+const authentication = require('../auth/auth')
 
 const router = express.Router()
 const financeController = require('../controllers/financeController')

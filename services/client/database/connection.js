@@ -3,6 +3,8 @@ const settings = require('../config/settings')
 
 const urldb = settings.dbpath
 
+console.log(urldb)
+
 // Conectar ao MongoDB
 mongoose.connect(urldb, {
   useNewUrlParser: true,

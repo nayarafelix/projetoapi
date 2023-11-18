@@ -1,4 +1,6 @@
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '../../.env') })
+
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -21,5 +23,5 @@ app.get('/', (req, res) => {
 app.use('/cliente', clientRoutes)
 
 app.listen(process.env.CLIENT_API_PORT, () => {
-  console.log(`Serviço de cliente rodando em ${process.env.HOST_NAME}:${process.env.CLIENT_API_PORT}`)
+  console.log(`Serviço de cliente rodando em http://${process.env.HOST_NAME}:${process.env.CLIENT_API_PORT}`)
 })
