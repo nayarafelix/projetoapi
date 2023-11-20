@@ -48,7 +48,7 @@ Para obter um token JWT, utilize a rota de autenticação.
 Utilização do Token:
 Inclua o token JWT nas solicitações às rotas que requerem autenticação no cabeçalho da seguinte maneira:
 ```
-Authorization: Bearer seu_token_jwt
+token: seu_token_jwt
 ```
 
 ### Rotas
@@ -126,10 +126,10 @@ Corpo da solicitação:
 ```
 {
   "clientId": "id_do_cliente",
-  "bank_name": "Nome do Banco",
-  "account_type": "Tipo de Conta",
-  "cardholder_name": "Nome do Titular do Cartão",
-  "card_limit": 5000
+  "bankName": "Nome do Banco",
+  "accountYype": "Tipo de Conta",
+  "cardholderName": "Nome do Titular do Cartão",
+  "cardLimit": 5000
 }
 ```
 Autenticação Necessária

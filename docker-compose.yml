@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mongodb:
+  userdb:
     image: mongo
     container_name: userdb
     ports:
@@ -10,9 +10,9 @@ services:
       MONGO_USER: "${USER_DB_USER}"
       MONGO_PASSWORD: "${USER_DB_PASSWORD}"
     volumes:
-      - "${USER_DB_DATA_DIR}:/data/db"
+      - "${USER_DB_DATA_DIR}:/data/userDB"
 
-  mongodb2:
+  clientdb:
     image: mongo
     container_name: clientdb
     ports:
@@ -22,4 +22,4 @@ services:
       MONGO_USER: "${CLIENT_DB_USER}"
       MONGO_PASSWORD: "${CLIENT_DB_PASSWORD}"
     volumes:
-      - "${CLIENT_DB_DATA_DIR}:/data/db"
+      - "${CLIENT_DB_DATA_DIR}:/data/clientDB"
